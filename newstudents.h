@@ -1,34 +1,38 @@
 #pragma once
 
 
-using namespace std;
 #ifndef newstudent
 #define newstudent
 #include <iostream>
+#include <string>
 #include <ctime>
-class students;
+
+
+using namespace std;
+class studnets;
 
 
 
 
+//namespace stud {
 
-namespace stud {
 
-
-	using name=char[16];
+	
 	class students
 	{
-	private:
-		name N{0};
+	public:
+		char name[16];
 		tm borntime ; //Äê¼Í
 		char xuehao[9];
 		bool sex=0;
 		int age=0;
-		uint16_t CProgram = 0;
-		uint16_t math = 0;
-		uint16_t English = 0;
+		uint16_t CProgram ;
+		uint16_t math ;
+		uint16_t English ;
 
-	public:
+	
+		friend class students;
+		static int GETsize();
 		bool SetName(string name);
 		bool SetAge(tm);
 		bool Setxuehao(string Xuehao);
@@ -37,8 +41,26 @@ namespace stud {
 		bool SetEnglish(int);
 		students(string, string, tm, bool, int, int, int);
 		~students() = default;
-		students();//undefine
-		students(students &Student);//undefine
+		students();
+
+		students(students& Student);
+		/*	:borntime(Student.borntime),
+			sex(Student.sex),
+			age(Student.age),
+			CProgram(Student.CProgram),
+			English(Student.English),
+			math(Student.math),
+			//borntime(Student.borntime)
+			{
+			strcpy_s(name, 16 * sizeof(char), (Student.name));
+			strcpy_s(xuehao, 9 * sizeof(char), (Student.xuehao));
+
+			
+
+
+		}*/
+			
+			//undefine
 		static int GetLengthOfStudents()
 		{
 			return sizeof(students);
@@ -47,7 +69,19 @@ namespace stud {
 
 
 	};
-}
+
+	//void getstudent(linken& link, const students& student);
+	
+
+
+
+
+
+
+
+
+
+//}
 
 
 
